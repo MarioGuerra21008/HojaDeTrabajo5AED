@@ -21,11 +21,11 @@ def Simulacion(env, proceso, RAM, CPU, duracionproceso, tiempo):
 
 env = simpy.Environment()
 CPU = simpy.Resource(env, capacity=1)
-RAM = simpy.Container(env, init=100, capacity=100)
+RAM = simpy.Container(env, init=10, capacity=100)
 intervalo = 10
 procesos = 25
 
 for i in range(procesos):
-    env.process(Simulacion(env, 'Proceso %d' % i, RAM, CPU, random.expovariate(1.0/ intervalo), i*intervalo))
+    env.process(Simulacion(env, 'Proceso %d' % i, RAM, CPU, random.expovariate(1.0/ intervalo), i))
 
 env.run()
